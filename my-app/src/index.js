@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import ConfirmButton from './chapter08/ComfirmButton';
+import LandingPage from './chapter09/LandingPage';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ConfirmButton />
+    <LandingPage />
     <App />
   </React.StrictMode>
 );
