@@ -4,9 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import ConfirmButton from './chapter08/ComfirmButton';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ConfirmButton />
     <App />
   </React.StrictMode>
 );
