@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import AttendanceBook from './chapter10/AttendanceBook';
+import SignUp from './chapter11/SignUp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AttendanceBook />
+    <SignUp />
     <App />
   </React.StrictMode>
 );
