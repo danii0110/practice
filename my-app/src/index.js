@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import Accommodate from './chapter07/Accommodate';
 import reportWebVitals from './reportWebVitals';
 
 import SignUp from './chapter11/SignUp';
@@ -9,7 +10,7 @@ import SignUp from './chapter11/SignUp';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SignUp />
+    <Accommodate />
     <App />
   </React.StrictMode>
 );
