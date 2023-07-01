@@ -5,9 +5,13 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Icon(Icons.star));
+    return MaterialApp(
+        home: Center(
+      child: Container(width: 50, height: 50, color: Colors.blue),
+    ));
   }
 }
