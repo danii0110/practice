@@ -1,26 +1,24 @@
-//import 'dart:io';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  MyApp({super.key});
+class MyApp extends StatefulWidget {
+  MyApp({Key? key}) : super(key: key);
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   var a = 1;
+  var name = ['김영숙', '홍길동', '피자집'];
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          child: Text(a.toString()),
-          onPressed: () {
-            a += 1;
-          },
-        ),
         appBar: AppBar(),
         bottomNavigationBar: BottomAppBar(
           color: Colors.white,
@@ -36,7 +34,11 @@ class MyApp extends StatelessWidget {
         body: ListView.builder(
           itemCount: 3,
           itemBuilder: (c, i) {
-            return Account();
+            return ListTile(
+              leading: Image.asset(
+                  '/Users/dani/Desktop/dani/practice/contact/assets/images/camera.png'),
+              title: Text(name[i]),
+            );
           },
         ),
       ),
