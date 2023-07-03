@@ -14,6 +14,17 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(),
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.white,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Icon(Icons.call),
+              Icon(Icons.message),
+              Icon(Icons.account_box),
+            ],
+          ),
+        ),
         body: ListView(
           children: [
             Account(),
