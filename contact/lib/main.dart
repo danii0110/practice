@@ -3,16 +3,24 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  var a = 1;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          child: Text(a.toString()),
+          onPressed: () {
+            a += 1;
+          },
+        ),
         appBar: AppBar(),
         bottomNavigationBar: BottomAppBar(
           color: Colors.white,
@@ -25,12 +33,11 @@ class MyApp extends StatelessWidget {
             ],
           ),
         ),
-        body: ListView(
-          children: [
-            Account(),
-            Account(),
-            Account(),
-          ],
+        body: ListView.builder(
+          itemCount: 3,
+          itemBuilder: (c, i) {
+            return Account();
+          },
         ),
       ),
     );
