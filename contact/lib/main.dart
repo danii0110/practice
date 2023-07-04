@@ -20,9 +20,9 @@ class _MyAppState extends State<MyApp> {
   var name = ['김영숙', '홍길동', '피자집'];
   var like = [0, 0, 0];
 
-  addName() {
+  addName(a) {
     setState(() {
-      name.add('말숙');
+      name.add(a);
     });
   }
 
@@ -75,7 +75,6 @@ class DiaglogUI extends StatelessWidget {
   final addOne;
   final addName;
   var inputData = TextEditingController();
-  var inputData2 = '';
 
   @override
   Widget build(BuildContext context) {
@@ -87,16 +86,15 @@ class DiaglogUI extends StatelessWidget {
         child: Column(
           children: [
             TextField(
-              onChanged: (text) {
-                inputData2 = text;
-              },
+              controller: inputData,
             ),
             TextButton(
-                child: Text('완료'),
-                onPressed: () {
-                  addOne();
-                  addName();
-                }),
+              child: Text('완료'),
+              onPressed: () {
+                addOne();
+                addName(inputData.text);
+              },
+            ),
             TextButton(
               child: Text('취소'),
               onPressed: () {
