@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    MaterialApp(
+      home: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -18,36 +22,37 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
-        bottomNavigationBar: BottomAppBar(
-          color: Colors.white,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Icon(Icons.call),
-              Icon(Icons.message),
-              Icon(Icons.account_box),
-            ],
-          ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) {
+                return Dialog(child: Text('안녕'));
+              });
+        },
+      ),
+      appBar: AppBar(),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Icon(Icons.call),
+            Icon(Icons.message),
+            Icon(Icons.account_box),
+          ],
         ),
-        body: ListView.builder(
-          itemCount: 3,
-          itemBuilder: (c, i) {
-            return ListTile(
-                leading: Text(like[i].toString()),
-                title: Text(name[i]),
-                trailing: ElevatedButton(
-                  child: Text('좋아요'),
-                  onPressed: () {
-                    setState(() {
-                      like[i]++;
-                    });
-                  },
-                ));
-          },
-        ),
+      ),
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (c, i) {
+          return ListTile(
+            leading: Image.asset(
+                '/Users/dani/Desktop/dani/practice/contact/assets/camera.png'),
+            title: Text(name[i]),
+          );
+        },
       ),
     );
   }
