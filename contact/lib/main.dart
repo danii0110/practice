@@ -16,23 +16,22 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var a = 1;
+  var total = 3;
   var name = ['김영숙', '홍길동', '피자집'];
   var like = [0, 0, 0];
+
+  addOne() {
+    setState(() {
+      total++;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showDialog(
-              context: context,
-              builder: (context) {
-                return Dialog(child: Text('안녕'));
-              });
-        },
+      appBar: AppBar(
+        title: Text(total.toString()),
       ),
-      appBar: AppBar(),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: Row(
@@ -54,6 +53,13 @@ class _MyAppState extends State<MyApp> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        showDialog(
+            context: context,
+            builder: (context) {
+              return DiaglogUI(addOne: addOne);
+            });
+      }),
     );
   }
 }
@@ -65,6 +71,44 @@ class Account extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [Icon(Icons.account_circle), Text('홍길동')],
+    );
+  }
+}
+
+class DiaglogUI extends StatelessWidget {
+  DiaglogUI({Key? key, this.addOne}) : super(key: key);
+  final addOne;
+  var inputData = TextEditingController();
+  var inputData2 = '';
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      child: Container(
+        padding: EdgeInsets.all(20),
+        width: 300,
+        height: 300,
+        child: Column(
+          children: [
+            TextField(
+              onChanged: (text) {
+                inputData2 = text;
+              },
+            ),
+            TextButton(
+                child: Text('완료'),
+                onPressed: () {
+                  addOne();
+                }),
+            TextButton(
+              child: Text('취소'),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
+        ),
+      ),
     );
   }
 }
