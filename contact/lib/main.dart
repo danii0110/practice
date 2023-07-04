@@ -20,6 +20,12 @@ class _MyAppState extends State<MyApp> {
   var name = ['김영숙', '홍길동', '피자집'];
   var like = [0, 0, 0];
 
+  addName() {
+    setState(() {
+      name.add('말숙');
+    });
+  }
+
   addOne() {
     setState(() {
       total++;
@@ -44,7 +50,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       body: ListView.builder(
-        itemCount: 3,
+        itemCount: name.length,
         itemBuilder: (c, i) {
           return ListTile(
             leading: Image.asset(
@@ -57,27 +63,17 @@ class _MyAppState extends State<MyApp> {
         showDialog(
             context: context,
             builder: (context) {
-              return DiaglogUI(addOne: addOne);
+              return DiaglogUI(addOne: addOne, addName: addName);
             });
       }),
     );
   }
 }
 
-class Account extends StatelessWidget {
-  const Account({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [Icon(Icons.account_circle), Text('홍길동')],
-    );
-  }
-}
-
 class DiaglogUI extends StatelessWidget {
-  DiaglogUI({Key? key, this.addOne}) : super(key: key);
+  DiaglogUI({Key? key, this.addOne, this.addName}) : super(key: key);
   final addOne;
+  final addName;
   var inputData = TextEditingController();
   var inputData2 = '';
 
@@ -99,6 +95,7 @@ class DiaglogUI extends StatelessWidget {
                 child: Text('완료'),
                 onPressed: () {
                   addOne();
+                  addName();
                 }),
             TextButton(
               child: Text('취소'),
