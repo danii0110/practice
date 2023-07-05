@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   var total = 3;
-  var name = [];
+  List<Contact> name = [];
   var like = [0, 0, 0];
 
   addName(a) {
