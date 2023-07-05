@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'package:contacts_service/contacts_service.dart';
 
 void main() {
   runApp(
@@ -16,8 +18,28 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  getPermission() async {
+    var status = await Permission.contacts.status;
+    if (status.isGranted) {
+      print('허락됨');
+      var contacts = await ContactsService.getContacts();
+      setState(() {
+        name = contacts;
+      });
+
+      //var newPerson = Contact();
+      //newPerson.givenName = '민수';
+      //newPerson.familyName = '김';
+      //await ContactsService.addContact(newPerson);
+    } else if (status.isDenied) {
+      print('거절됨');
+    }
+    Permission.contacts.request();
+    openAppSettings();
+  }
+
   var total = 3;
-  var name = ['김영숙', '홍길동', '피자집'];
+  var name = [];
   var like = [0, 0, 0];
 
   addName(a) {
@@ -36,7 +58,16 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(total.toString()),
+        title: Text(
+          total.toString(),
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                getPermission();
+              },
+              icon: Icon(Icons.contacts))
+        ],
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -55,7 +86,7 @@ class _MyAppState extends State<MyApp> {
           return ListTile(
             leading: Image.asset(
                 '/Users/dani/Desktop/dani/practice/contact/assets/camera.png'),
-            title: Text(name[i]),
+            title: Text(name[i].givenName),
           );
         },
       ),
