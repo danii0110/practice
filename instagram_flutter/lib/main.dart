@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 void main() {
   runApp(MaterialApp(
       theme: ThemeData(
-        iconTheme: IconThemeData(color: Colors.blue),
         appBarTheme: AppBarTheme(
-            color: Colors.grey,
-            actionsIconTheme: IconThemeData(color: Colors.blue)),
-        textTheme: TextTheme(bodyMedium: TextStyle(color: Colors.red)),
+          color: Colors.white,
+          elevation: 1,
+          titleTextStyle: TextStyle(color: Colors.black, fontSize: 25),
+          actionsIconTheme: IconThemeData(color: Colors.black),
+        ),
+        textTheme: TextTheme(
+          bodyMedium: TextStyle(color: Colors.red),
+        ),
       ),
       home: MyApp()));
 }
@@ -21,13 +25,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Instagram'),
         actions: [
-          Icon(
-            Icons.star,
+          IconButton(
+            icon: Icon(Icons.add_box_outlined),
+            onPressed: () {},
+            iconSize: 30,
           )
         ],
       ),
-      body: Text('안녕', style: a),
+      body: Text('안녕'),
     );
   }
 }
