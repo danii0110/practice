@@ -1,19 +1,8 @@
 import 'package:flutter/material.dart';
+import './style.dart' as style;
 
 void main() {
-  runApp(MaterialApp(
-      theme: ThemeData(
-        appBarTheme: AppBarTheme(
-          color: Colors.white,
-          elevation: 1,
-          titleTextStyle: TextStyle(color: Colors.black, fontSize: 25),
-          actionsIconTheme: IconThemeData(color: Colors.black),
-        ),
-        textTheme: TextTheme(
-          bodyMedium: TextStyle(color: Colors.red),
-        ),
-      ),
-      home: MyApp()));
+  runApp(MaterialApp(theme: style.theme, home: MyApp()));
 }
 
 var a = TextStyle();
@@ -34,7 +23,10 @@ class MyApp extends StatelessWidget {
           )
         ],
       ),
-      body: Text('안녕'),
+      body: Text(
+        '안녕',
+        style: Theme.of(context).textTheme.bodyMedium,
+      ),
     );
   }
 }
